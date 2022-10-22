@@ -1,3 +1,8 @@
+<?php  
+include("inc/db.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +65,19 @@
       </tr>
     </thead>
     <tbody>
+        <?php 
+
+        $sel="SELECT * FROM events";
+        $rs=$con->query($sel);
+        while($row=$rs->fetch_assoc()){
+        ?>
+        <tr>
+            <td><?php  echo $row['event_name'];  ?></td>
+            <td><?php  echo $row['event_date'];  ?></td>
+            <td><?php  echo $row['event_venue'];  ?></td>
+            <td><img style="width:100px" src="../event_photo/<?php echo $row['event_image']; ?>"/></td>
+        </tr>
+      <?php  }?>
       
     </tbody>
   </table>

@@ -47,7 +47,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Add Event</h1>
 
-                    <form>
+                    <form action="ins_event.php" method="post" enctype="multipart/form-data"  >
                       <p>Event name</p>
                       <p><input type="text" name="event_name" /></p>  
 
