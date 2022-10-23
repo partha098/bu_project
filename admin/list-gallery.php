@@ -1,3 +1,7 @@
+<?php  
+include("inc/db.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +63,20 @@
       </tr>
     </thead>
     <tbody>
+    <?php 
+
+$sel="SELECT * FROM gallery";
+$rs=$con->query($sel);
+while($row=$rs->fetch_assoc()){
+?>
+<tr>
+<td><?php  echo $row['title'];  ?></td>
+<td><img style="width:70px" src="../gallery/<?php echo $row['image']; ?>"/></td>
+<td><a onclick="return confirm('Are you sure?');" href="del_gallery.php?id=<?php  echo $row['image_id'];  ?>" class="btn btn-danger">Delete</a></td> 
+</tr>
+
       
+<?php  }?>
     </tbody>
   </table>
 

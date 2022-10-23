@@ -75,7 +75,9 @@ include("inc/db.php");
             <td><?php  echo $row['event_name'];  ?></td>
             <td><?php  echo $row['event_date'];  ?></td>
             <td><?php  echo $row['event_venue'];  ?></td>
-            <td><img style="width:100px" src="../event_photo/<?php echo $row['event_image']; ?>"/></td>
+            <td><img style="width:70px" src="../event_photo/<?php echo $row['event_image']; ?>"/></td>
+
+           <td><a onclick="return confirm('Are you sure?');" href="del_event.php?id=<?php  echo $row['event_id'];  ?>" class="btn btn-danger">Delete</a></td> 
         </tr>
       <?php  }?>
       

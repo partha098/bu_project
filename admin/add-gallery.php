@@ -47,7 +47,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Add Image</h1>
 
-                    <form>
+                    <form action="ins_gallery.php" method="post" enctype="multipart/form-data"  >
                         <p>Image Name</p>
                         <p><input type="text" name="title" /></p>
 
