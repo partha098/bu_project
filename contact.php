@@ -41,89 +41,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //header -->
 <!-- banner -->
-<div class="banner">
-	<div class="container">
-		<!-- responsiveslides -->
-								<script src="js/responsiveslides.min.js"></script>
-									<script>
-										// You can also use "$(window).load(function() {"
-										$(function () {
-										 // Slideshow 4
-										$("#slider3").responsiveSlides({
-											auto: true,
-											pager: false,
-											nav: false,
-											speed: 500,
-											namespace: "callbacks",
-											before: function () {
-										$('.events').append("<li>before event fired.</li>");
-										},
-										after: function () {
-											$('.events').append("<li>after event fired.</li>");
-											}
-											});
-											});
-									</script>
-		<!-- responsiveslides -->
-		<div  id="top" class="callbacks_container">
-				<ul class="rslides" id="slider3">
-					<li>
-						<div class="banner-info">
-							<h3>WE NEED YOUR SUPPORT</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus
-							error sit voluptatem accusantium doloremque 
-							laudantium, totam rem aperiam, eaque ipsa quae 
-							ab illo inventore veritatis et quasi architecto 
-							beatae vitae dicta sunt</p>
-							<a href="#" class="hvr-rectangle-out button">READ MORE</a>
-						</div>
-						<div class="clearfix"></div>
-					</li>
-					<li>
-						<div class="banner-info">
-							<h3>HELP TURN TEARS TO SURES</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus
-							error sit voluptatem accusantium doloremque 
-							laudantium, totam rem aperiam, eaque ipsa quae 
-							ab illo inventore veritatis et quasi architecto 
-							beatae vitae dicta sunt </p>
-							<a href="#" class="hvr-rectangle-out button">READ MORE</a>
-						</div>
-						<div class="clearfix"></div>
-					</li>
-				</ul>
-		</div>
-	</div>
-</div>
+
 <!-- //banner -->
 <!-- banner-bottom -->
 <div >
 	<div class="container">
       <div class="row">
 
-	  <h2 class="heading">Events</h2>
+	  <h2 class="heading">Contact us </h2>
 
-	  <?php 
+		<div class="col-md-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14719.592858861892!2d88.4998499!3d22.7320243!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa012120ab7f1da34!2sBrainware%20University!5e0!3m2!1sen!2sin!4v1667121189726!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
 
-$sel="SELECT * FROM events";
-$rs=$con->query($sel);
-while($row=$rs->fetch_assoc()){
-?>
-		<div class="col-md-3">
-		<div class="card" >
-  <img class="card-img-top" src="event_photo/<?php echo $row['event_image']; ?>" alt="Card image">
-  <div class="card-body">
-    <h4 class="card-title"><?php  echo $row['event_name'];  ?></h4>
-    <h4 class="card-text"><?php  echo date("d-M-Y",strtotime($row['event_date']));  ?></h4>
+        <div class="col-md-6">
+            <h4>398, Ramkrishnapur Rd, near Jagadighata Market, Barasat, Kolkata, West Bengal 700125</h4>
+		
+        <h4 style="padding-top:30px">Call: 1234567890</h4>
 
-	<h4 class="card-text"><?php  echo $row['event_venue'];  ?></h4>
-   
-  </div>
-</div>
+
+        </div>
 
 		</div>
 
-		<?php  }?>
+	
 
 
 
@@ -135,7 +76,7 @@ while($row=$rs->fetch_assoc()){
 <!-- //banner-bottom -->
 <!-- //footer -->
 <!-- copy -->
-<div class="copy-right" >
+<div class="copy-right">
 	<?php include("inc/footer.php"); ?>
 </div>
 <!-- copy -->

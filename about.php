@@ -41,89 +41,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //header -->
 <!-- banner -->
-<div class="banner">
-	<div class="container">
-		<!-- responsiveslides -->
-								<script src="js/responsiveslides.min.js"></script>
-									<script>
-										// You can also use "$(window).load(function() {"
-										$(function () {
-										 // Slideshow 4
-										$("#slider3").responsiveSlides({
-											auto: true,
-											pager: false,
-											nav: false,
-											speed: 500,
-											namespace: "callbacks",
-											before: function () {
-										$('.events').append("<li>before event fired.</li>");
-										},
-										after: function () {
-											$('.events').append("<li>after event fired.</li>");
-											}
-											});
-											});
-									</script>
-		<!-- responsiveslides -->
-		<div  id="top" class="callbacks_container">
-				<ul class="rslides" id="slider3">
-					<li>
-						<div class="banner-info">
-							<h3>WE NEED YOUR SUPPORT</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus
-							error sit voluptatem accusantium doloremque 
-							laudantium, totam rem aperiam, eaque ipsa quae 
-							ab illo inventore veritatis et quasi architecto 
-							beatae vitae dicta sunt</p>
-							<a href="#" class="hvr-rectangle-out button">READ MORE</a>
-						</div>
-						<div class="clearfix"></div>
-					</li>
-					<li>
-						<div class="banner-info">
-							<h3>HELP TURN TEARS TO SURES</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus
-							error sit voluptatem accusantium doloremque 
-							laudantium, totam rem aperiam, eaque ipsa quae 
-							ab illo inventore veritatis et quasi architecto 
-							beatae vitae dicta sunt </p>
-							<a href="#" class="hvr-rectangle-out button">READ MORE</a>
-						</div>
-						<div class="clearfix"></div>
-					</li>
-				</ul>
-		</div>
-	</div>
-</div>
+
 <!-- //banner -->
 <!-- banner-bottom -->
 <div >
 	<div class="container">
       <div class="row">
 
-	  <h2 class="heading">Events</h2>
+	  <h2 class="heading">About US </h2>
 
-	  <?php 
-
-$sel="SELECT * FROM events";
-$rs=$con->query($sel);
-while($row=$rs->fetch_assoc()){
-?>
-		<div class="col-md-3">
-		<div class="card" >
-  <img class="card-img-top" src="event_photo/<?php echo $row['event_image']; ?>" alt="Card image">
-  <div class="card-body">
-    <h4 class="card-title"><?php  echo $row['event_name'];  ?></h4>
-    <h4 class="card-text"><?php  echo date("d-M-Y",strtotime($row['event_date']));  ?></h4>
-
-	<h4 class="card-text"><?php  echo $row['event_venue'];  ?></h4>
-   
-  </div>
+		<div class="col-md-12">
+		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
 </div>
 
 		</div>
 
-		<?php  }?>
+	
 
 
 
@@ -135,7 +70,7 @@ while($row=$rs->fetch_assoc()){
 <!-- //banner-bottom -->
 <!-- //footer -->
 <!-- copy -->
-<div class="copy-right" >
+<div class="copy-right">
 	<?php include("inc/footer.php"); ?>
 </div>
 <!-- copy -->
