@@ -1,14 +1,12 @@
-<?php session_start(); 
-if(!isset($_SESSION['admin_id'])){
-header("location:index.php");
-}
+<?php session_start();
 
-?>
+if(!isset($_SESSION['admin_id'])){
+    header("location:index.php");
+    }
+    ?>
 <?php  
 include("inc/db.php");
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,44 +54,30 @@ include("inc/db.php");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">List Events</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Edit Image</h1>
 
-                    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Venue</th>
-        <th>Image</th>
-        <th>Delete</th>
-        <th>Edit</th>
-
-      </tr>
-    </thead>
-    <tbody>
-        <?php 
-
-        $sel="SELECT * FROM events";
-        $rs=$con->query($sel);
-        while($row=$rs->fetch_assoc()){
-        ?>
-        <tr>
-            <td><?php  echo $row['event_name'];  ?></td>
-            <td><?php  echo $row['event_date'];  ?></td>
-            <td><?php  echo $row['event_venue'];  ?></td>
-            <td><img style="width:70px" src="../event_photo/<?php echo $row['event_image']; ?>"/></td>
-
-           <td><a onclick="return confirm('Are you sure?');" href="del_event.php?id=<?php  echo $row['event_id'];  ?>" class="btn btn-danger">Delete</a></td> 
+                    <?php 
+                    $eid=$_GET['id'];
+                    $sel="SELECT * FROM gallery WHERE image_id='$eid'";
+                        $rs=$con->query($sel);
+                        $row=$rs->fetch_assoc();
 
 
-           
-           <td><a  href="edit_event.php?id=<?php  echo $row['event_id'];  ?>" class="btn btn-success">Edit</a></td> 
+                        ?>
 
-        </tr>
-      <?php  }?>
-      
-    </tbody>
-  </table>
+                    <form action="upd_gallery.php" method="post" enctype="multipart/form-data"  >
+                    <input type="hidden" name="id" value="<?php echo $row['image_id']; ?>"/>   
+                    
+                    <p>Image Name</p>
+                        <p><input type="text" name="title" value="<?php echo $row['title'];?>" /></p>
+
+                        <p>Image</p>
+                        <p><input type="file" name="gimg" /></p>
+                        <p><img style="width:70px" src="../gallery/<?php echo $row['image']; ?>"/></p>
+
+                        <p><input type="submit" name="save" value="Add Image" class="btn btn-success" /></p>
+
+                      </form>
 
                 </div>
                 <!-- /.container-fluid -->

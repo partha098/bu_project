@@ -1,3 +1,8 @@
+<?php session_start(); 
+if(!isset($_SESSION['admin_id'])){
+    header("location:index.php");
+    }
+?>
 <?php  
 include("inc/db.php");
 
@@ -73,6 +78,8 @@ while($row=$rs->fetch_assoc()){
 <td><?php  echo $row['title'];  ?></td>
 <td><img style="width:70px" src="../gallery/<?php echo $row['image']; ?>"/></td>
 <td><a onclick="return confirm('Are you sure?');" href="del_gallery.php?id=<?php  echo $row['image_id'];  ?>" class="btn btn-danger">Delete</a></td> 
+
+<td><a href="edit_gallery.php?id=<?php  echo $row['image_id'];  ?>" class="btn btn-success">Edit</a></td> 
 </tr>
 
       

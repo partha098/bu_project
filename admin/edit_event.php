@@ -1,14 +1,11 @@
-<?php session_start(); 
-if(!isset($_SESSION['admin_id'])){
+<?php session_start();
+ if(!isset($_SESSION['admin_id'])){
 header("location:index.php");
 }
-
 ?>
 <?php  
 include("inc/db.php");
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,44 +53,36 @@ include("inc/db.php");
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">List Events</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Edit Event</h1>
 
-                    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Venue</th>
-        <th>Image</th>
-        <th>Delete</th>
-        <th>Edit</th>
-
-      </tr>
-    </thead>
-    <tbody>
-        <?php 
-
-        $sel="SELECT * FROM events";
+                    <?php 
+                     $eid=$_GET['id'];
+                 
+       $sel="SELECT * FROM events WHERE event_id='$eid'";
         $rs=$con->query($sel);
-        while($row=$rs->fetch_assoc()){
-        ?>
-        <tr>
-            <td><?php  echo $row['event_name'];  ?></td>
-            <td><?php  echo $row['event_date'];  ?></td>
-            <td><?php  echo $row['event_venue'];  ?></td>
-            <td><img style="width:70px" src="../event_photo/<?php echo $row['event_image']; ?>"/></td>
+        $row=$rs->fetch_assoc();
 
-           <td><a onclick="return confirm('Are you sure?');" href="del_event.php?id=<?php  echo $row['event_id'];  ?>" class="btn btn-danger">Delete</a></td> 
+                   ?>
 
+                    <form action="upd_event.php" method="post" enctype="multipart/form-data"  >
 
-           
-           <td><a  href="edit_event.php?id=<?php  echo $row['event_id'];  ?>" class="btn btn-success">Edit</a></td> 
+          <input type="hidden" name="id" value="<?php echo $row['event_id']; ?>"  >         
+                      <p>Event name</p>
+                      <p><input type="text" name="event_name" value="<?php echo $row['event_name']; ?>" /></p>  
 
-        </tr>
-      <?php  }?>
-      
-    </tbody>
-  </table>
+                      <p>Event Date</p>
+                      <p><input type="date" name="event_date" value="<?php echo $row['event_date']; ?>" /></p>  
+
+                      <p>Event venue</p>
+                      <p><input type="text" name="event_venue" value="<?php echo $row['event_venue']; ?>" /></p>  
+
+                      <p>Event Image</p>
+                      <p><input type="file" name="event_image" /></p>
+                      <p><img style="width:70px" src="../event_photo/<?php echo $row['event_image']; ?>"/></p>
+                      
+                      <p><input type="submit" name="save" value="Edit Event" class="btn btn-success" /></p>
+
+                    </form>
 
                 </div>
                 <!-- /.container-fluid -->
