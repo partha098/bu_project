@@ -31,6 +31,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 <!---- start-smoth-scrolling---->
+<style>
+	.modal-body p{
+		margin: 20px;
+	}
+	</style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -70,27 +78,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li>
 						<div class="banner-info">
 							<h3>WE NEED YOUR SUPPORT</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus
-							error sit voluptatem accusantium doloremque 
-							laudantium, totam rem aperiam, eaque ipsa quae 
-							ab illo inventore veritatis et quasi architecto 
-							beatae vitae dicta sunt</p>
-							<a href="#" class="hvr-rectangle-out button">READ MORE</a>
+							
+							<a data-toggle="modal" data-target="#donate" href="#" class="hvr-rectangle-out button">Donate Now</a>
 						</div>
 						<div class="clearfix"></div>
 					</li>
-					<li>
-						<div class="banner-info">
-							<h3>HELP TURN TEARS TO SURES</h3>
-							<p>Sed ut perspiciatis unde omnis iste natus
-							error sit voluptatem accusantium doloremque 
-							laudantium, totam rem aperiam, eaque ipsa quae 
-							ab illo inventore veritatis et quasi architecto 
-							beatae vitae dicta sunt </p>
-							<a href="#" class="hvr-rectangle-out button">READ MORE</a>
-						</div>
-						<div class="clearfix"></div>
-					</li>
+					
 				</ul>
 		</div>
 	</div>
@@ -156,5 +149,72 @@ while($row=$rs->fetch_assoc()){
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
 
+<script>
+
+function pay_now(){
+        var name=$("#dn").val();
+        var amt=$("#da").val();
+
+
+         jQuery.ajax({
+               type:'post',
+               url:'payment_process.php',
+               data:"amt="+amt+"&name="+name,
+               success:function(result){
+                   var options = {
+                        "key": "",
+                        "amount": amt*100,
+                        "currency": "INR",
+                        "name": "Donation",
+                        "description": "Happy Home",
+                        "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                        "handler": function (response){
+                           jQuery.ajax({
+                               type:'post',
+                               url:'payment_process.php',
+                               data:"payment_id="+response.razorpay_payment_id,
+                               success:function(result){
+                                   window.location.href="index.php";
+                               }
+                           });
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+               }
+           });
+
+
+     }
+</script>
+
+
+<div class="modal" id="donate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Donate </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>Name</p>
+		<p><input type="text" id="dn" class="form-control" /></p>
+		<p>Amount</p>
+		<p><input type="number" id="da" class="form-control" /></p>
+		<p><input onclick="pay_now();" type="button" value="Donate Now" class="btn btn-success"/>"</p>
+      </div>
+
+    
+
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
